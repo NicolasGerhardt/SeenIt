@@ -69,9 +69,9 @@ namespace Seenit.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult NewComment(int id)
+        public ActionResult NewComment(int postId)
         {
-            Comment model = new Comment { PostID = id };
+            var model = new Comment { PostID = postId };
             return View(model);
         }
 

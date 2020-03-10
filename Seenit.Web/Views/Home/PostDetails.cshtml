@@ -22,7 +22,7 @@
     </dl>
     <hr />
     <p>
-        @Html.ActionLink("New Comment", "NewComment", new { id = Model.Post.ID }) |
+        @Html.ActionLink("New Comment", "NewComment", new { postId = Model.Post.ID }) |
         @Html.ActionLink("Back to Main", "Index")
     </p>
     @foreach (var item in Model.Comments)
