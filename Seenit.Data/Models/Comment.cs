@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Seenit.Data.Models
 {
-    class Comments
+    public class Comment
     {
         public int ID { get; set; }
-        public string PostID { get; set; }
+        public int PostID { get; set; }
         [Required]
         public string Username { get; set; }
         [Required]

@@ -1,5 +1,6 @@
 ﻿using Seenit.Data.Models;
 using Seenit.Data.Services;
+using Seenit.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +11,26 @@ namespace Seenit.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IPostData db;
+        private readonly IPostData postData;
+        private readonly ICommentData commentData;
 
-        public HomeController(IPostData db)
+        public HomeController(IPostData postData, ICommentData commentData)
         {
-            this.db = db;
+            this.postData = postData;
+            this.commentData = commentData;
         }
 
         [HttpGet]
         public ActionResult Index()
         {
-            var model = db.GetAll();
+            var model = postData.GetAll();
             return View(model);
         }
 
         [HttpGet]
         public ActionResult About()
         {
-            ViewBag.Message = "Seenit is a posting engine";
+            ViewBag.Message = "Seenit is for posting and commenting!";
 
             return View();
         }
@@ -35,11 +38,13 @@ namespace Seenit.Web.Controllers
         [HttpGet]
         public ActionResult PostDetails(int id)
         {
-            var model = db.Get(id);
-            if (model == null)
+            var post = postData.Get(id);
+            if (post == null)
             {
                 return View("NotFound");
             }
+
+            var model = new PostViewModel { Post = post, Comments = commentData.GetAllForPost(post.ID) };
             return View(model);
         }
 
@@ -56,7 +61,7 @@ namespace Seenit.Web.Controllers
             if(ModelState.IsValid)
             {
                 post.PostTime = DateTime.Now;
-                db.Add(post);
+                postData.Add(post);
                 return RedirectToAction("PostDetails", new { id = post.ID } );
             }
 

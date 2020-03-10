@@ -16,8 +16,8 @@ namespace Seenit.Data.Services
             Posts = new List<Post>
             {
                 new Post { ID = 0, Title = "First!!", Username = "Nic", Text = "This is the first post in the In Memory Data", PostTime = DateTime.Now},
-                new Post { ID = 1, Title = "Second!", Username = "Nic", Text = "This is the Second post in the In Memory Data", PostTime = DateTime.Now},
-                new Post { ID = 2, Title = "Third", Username = "Nic", Text = "This is what it feels like to be a loser\n:-(", PostTime = DateTime.Now}
+                new Post { ID = 1, Title = "Test Post 1", Username = "Nic", Text = "This is Test Data!! 1", PostTime = DateTime.Now},
+                new Post { ID = 2, Title = "Test Post 2", Username = "Nic", Text = "This is Test Data!! 2", PostTime = DateTime.Now}
             };
         }
 

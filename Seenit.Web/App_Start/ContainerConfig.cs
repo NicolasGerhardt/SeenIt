@@ -21,6 +21,10 @@ namespace Seenit.Web.App_Start
                    .As<IPostData>()
                    .SingleInstance();
 
+            builder.RegisterType<InMemoryCommentData>()
+                   .As<ICommentData>()
+                   .SingleInstance();
+
             var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container)); //MVC web
