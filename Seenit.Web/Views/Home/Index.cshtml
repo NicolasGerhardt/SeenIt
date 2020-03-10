@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Seenit.Data.Models.Post>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Seenit</h1>
+    <p class="lead">You Seen't something, let us know by telling us you Seenit</p>
+</div>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <h3>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </h3>
+            </td>
+            <td>
+                @Html.ActionLink("View Post", "PostDetails", new { id = item.ID })
+            </td>
+        </tr>
+    }
+</table>
