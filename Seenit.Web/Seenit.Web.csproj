@@ -191,6 +191,7 @@
     <Content Include="Views\Home\NotFound.cshtml" />
     <Content Include="Views\Home\CreatePost.cshtml" />
     <Content Include="Views\Home\PostDetails.cshtml" />
+    <Content Include="Views\Home\NewComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

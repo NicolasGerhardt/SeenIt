@@ -58,11 +58,32 @@ namespace Seenit.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreatePost(Post post)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 post.PostTime = DateTime.Now;
                 postData.Add(post);
-                return RedirectToAction("PostDetails", new { id = post.ID } );
+                return RedirectToAction("PostDetails", new { id = post.ID });
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult NewComment(int id)
+        {
+            Comment model = new Comment { PostID = id };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewComment(Comment comment)
+        {
+            if (ModelState.IsValid)
+            {
+                comment.PostTime = DateTime.Now;
+                commentData.Add(comment, comment.PostID);
+                return RedirectToAction("PostDetails", new { id = comment.PostID });
             }
 
             return View();
