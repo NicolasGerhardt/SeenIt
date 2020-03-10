@@ -1,4 +1,5 @@
-﻿using Seenit.Data.Services;
+﻿using Seenit.Data.Models;
+using Seenit.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,25 @@ namespace Seenit.Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult CreatePost()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePost(Post post)
+        {
+            if(ModelState.IsValid)
+            {
+                post.PostTime = DateTime.Now;
+                db.Add(post);
+                return RedirectToAction("PostDetails", new { id = post.ID } );
+            }
+
+            return View();
+        }
 
 
     }

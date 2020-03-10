@@ -8,23 +8,25 @@
     <p class="lead">You Seen't something, let us know by telling us you Seenit</p>
 </div>
 
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-    </tr>
+<p>
+    @Html.ActionLink("New Post", "CreatePost")
+</p>
+
+<div>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                <h3>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </h3>
-            </td>
-            <td>
+        <hr />
+        <dl>
+            <dt>
+                @Html.DisplayFor(modelItem => item.Title)
+            </dt>
+            <dd>
+                by @Html.DisplayFor(modelItem => item.Username)
+            </dd>
+            <dd>
                 @Html.ActionLink("View Post", "PostDetails", new { id = item.ID })
-            </td>
-        </tr>
+            </dd>
+
+        </dl>
     }
-</table>
+</div>

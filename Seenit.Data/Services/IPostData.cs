@@ -11,5 +11,6 @@ namespace Seenit.Data.Services
     {
         IEnumerable<Post> GetAll();
         Post Get(int ID);
+        void Add(Post post);
     }
 }

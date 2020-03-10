@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Seenit.Data.Models
 {
-    public class Post
+    class Comments
     {
         public int ID { get; set; }
-        [Required]
-        public string Title { get; set; }
+        public string PostID { get; set; }
         [Required]
         public string Username { get; set; }
+        [Required]
         public string Text { get; set; }
         public DateTime PostTime { get; set; }
     }

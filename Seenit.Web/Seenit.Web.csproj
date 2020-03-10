@@ -188,6 +188,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\NotFound.cshtml" />
+    <Content Include="Views\Home\CreatePost.cshtml" />
     <Content Include="Views\Home\PostDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
