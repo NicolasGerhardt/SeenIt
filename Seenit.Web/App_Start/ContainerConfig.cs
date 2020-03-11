@@ -17,14 +17,15 @@ namespace Seenit.Web.App_Start
             var builder = new ContainerBuilder();
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
-            builder.RegisterType<InMemoryPostData>()
+            builder.RegisterType<SQLPostData>()
                    .As<IPostData>()
-                   .SingleInstance();
+                   .InstancePerRequest();
 
-            builder.RegisterType<InMemoryCommentData>()
+            builder.RegisterType<SQLCommentData>()
                    .As<ICommentData>()
-                   .SingleInstance();
+                   .InstancePerRequest();
 
+            builder.RegisterType<SeenitDBContext>().InstancePerRequest();
             var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container)); //MVC web
